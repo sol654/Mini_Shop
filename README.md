@@ -43,7 +43,7 @@ Mini Shop is a complete e-commerce solution built with Flask that fulfills all t
 1. **Clone the repository**
    ```bash
    git clone https://github.com/sol654/Mini_Shop
-   cd Mini-Shop
+   cd Mini_Shop
    ```
 
 2. **Install dependencies**
