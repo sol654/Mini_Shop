@@ -1,0 +1,21 @@
+<!-- templates/order_summary.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="order-summary-container">
+    <h1>Order Confirmation</h1>
+    
+    <div class="order-confirmation">
+        <div class="confirmation-icon">✓</div>
+        <h2>Thank you for your order!</h2>
+        <p>Your order has been placed successfully.</p>
+        <p class="order-id">Order #: {{ order_id }}</p>
+        
+        <p>You will receive an email confirmation shortly.</p>
+        
+        <div class="confirmation-actions">
+            <a href="{{ url_for('catalog') }}" class="button primary">Continue Shopping</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

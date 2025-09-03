@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Mini Shop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="nav-brand">
+            <a href="{{ url_for('catalog') }}">Mini Shop</a>
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('catalog') }}">Catalog</a>
+            <a href="{{ url_for('view_cart') }}">Cart ({{ cart_total }})</a>
+            {% if session.get('is_admin') %}
+                <a href="{{ url_for('admin_products') }}">Admin</a>
+                <a href="{{ url_for('admin_logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('admin_login') }}">Admin Login</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main>
+        <div class="cart-container">
+            <h1>Shopping Cart</h1>
+            
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-messages">
+                        {% for category, message in messages %}
+                            <div class="flash {{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% if cart_items %}
+            <form action="{{ url_for('update_cart') }}" method="post">
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cart_items %}
+                        <tr>
+                            <td>
+                                <div class="product-info">
+                                    <div class="product-image">
+                                        <img src="{{ item.product.image }}" alt="{{ item.product.name }}">
+                                    </div>
+                                    <div class="product-details">
+                                        <h4>{{ item.product.name }}</h4>
+                                        <p class="category">{{ item.product.category }}</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="price">${{ "%.2f"|format(item.product.price / 100) }}</td>
+                            <td>
+                                <div class="quantity-form">
+                                    <input type="number" name="qty_{{ item.product.id }}" 
+                                           value="{{ item.quantity }}" min="0" class="quantity-input">
+                                </div>
+                            </td>
+                            <td class="item-total">${{ "%.2f"|format(item.total / 100) }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="total-label">Total:</td>
+                            <td class="total-amount">${{ "%.2f"|format(total / 100) }}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <div class="cart-actions">
+                    <a href="{{ url_for('catalog') }}" class="button">Continue Shopping</a>
+                    <button type="submit" class="button primary">Update Cart</button>
+                    <a href="{{ url_for('checkout') }}" class="button primary">Checkout</a>
+                </div>
+            </form>
+            {% else %}
+            <div class="empty-cart">
+                <h2>Your cart is empty</h2>
+                <p>Browse our catalog to add items to your cart.</p>
+                <a href="{{ url_for('catalog') }}" class="button primary">Start Shopping</a>
+            </div>
+            {% endif %}
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mini Shop. All rights reserved.</p>
+    </footer>
+</body>
+</html>

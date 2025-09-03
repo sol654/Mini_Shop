@@ -1,0 +1,86 @@
+<!-- templates/admin_products.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="admin-products-container">
+    <h1>Product Management</h1>
+    
+    <div class="admin-actions">
+        <h2>Add New Product</h2>
+        <form method="POST" action="{{ url_for('admin_update_products') }}" class="product-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Product Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="price">Price (in cents)</label>
+                    <input type="number" id="price" name="price" min="0" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="stock">Stock</label>
+                    <input type="number" id="stock" name="stock" min="0" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <input type="text" id="category" name="category" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="image">Image URL</label>
+                <input type="text" id="image" name="image" required>
+            </div>
+            
+            <button type="submit" class="button primary">Add Product</button>
+        </form>
+    </div>
+    
+    <div class="products-list">
+        <h2>Existing Products</h2>
+        
+        {% for product in products %}
+            <form method="POST" action="{{ url_for('admin_update_products') }}" class="product-form">
+                <input type="hidden" name="id" value="{{ product.id }}">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Product Name</label>
+                        <input type="text" name="name" value="{{ product.name }}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Price (in cents)</label>
+                        <input type="number" name="price" value="{{ product.price }}" min="0" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Stock</label>
+                        <input type="number" name="stock" value="{{ product.stock }}" min="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Category</label>
+                        <input type="text" name="category" value="{{ product.category }}" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Image URL</label>
+                    <input type="text" name="image" value="{{ product.image }}" required>
+                </div>
+                
+                <button type="submit" class="button">Update Product</button>
+            </form>
+            <hr>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

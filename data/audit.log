@@ -1,0 +1,21 @@
+2025-09-03 09:59:44 - ADMIN_LOGIN - Success
+2025-09-03 10:00:39 - ADMIN_LOGOUT - Success
+2025-09-03 10:13:31 - ADD_TO_CART - Product: USB Keyboard, Qty: 1
+2025-09-03 10:14:46 - CHECKOUT - Order: 0B8D2878, Total: $55.93
+2025-09-03 10:16:16 - ADMIN_LOGIN - Success
+2025-09-03 10:16:21 - ADMIN_LOGOUT - Success
+2025-09-03 10:16:33 - ADMIN_LOGIN - Failed attempt
+2025-09-03 11:23:36 - ADMIN_LOGIN - Success
+2025-09-03 11:32:57 - ADD_TO_CART - Product: USB Keyboard, Qty: 1
+2025-09-03 11:48:43 - ADMIN_LOGOUT - Success
+2025-09-03 11:49:16 - ADD_TO_CART - Product: USB Keyboard, Qty: 1
+2025-09-03 11:49:35 - ADD_TO_CART - Product: HDMI Cable, Qty: 1
+2025-09-03 11:49:36 - ADD_TO_CART - Product: USB Keyboard, Qty: 1
+2025-09-03 11:49:38 - ADD_TO_CART - Product: USB Keyboard, Qty: 1
+2025-09-03 11:49:42 - ADD_TO_CART - Product: USB Keyboard, Qty: 1
+2025-09-03 12:14:18 - ADD_TO_CART - Product: USB Keyboard, Qty: 1
+2025-09-03 12:14:22 - ADD_TO_CART - Product: USB Mouse, Qty: 1
+2025-09-03 12:14:42 - ADMIN_LOGIN - Success
+2025-09-03 12:15:57 - PRODUCT_UPDATE - Product: USB Keyboard
+2025-09-03 12:16:36 - PRODUCT_UPDATE - Product: USB Keyboard
+2025-09-03 12:17:20 - ADMIN_LOGOUT - Success

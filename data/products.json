@@ -1,0 +1,50 @@
+[
+  {
+    "id": "P-001",
+    "name": "USB Keyboard",
+    "price": 799,
+    "stock": 12,
+    "category": "Peripherals",
+    "image": "/static/images/keyboard.jpg"
+  },
+  {
+    "id": "P-002",
+    "name": "USB Mouse",
+    "price": 399,
+    "stock": 20,
+    "category": "Peripherals",
+    "image": "/static/images/mouse.jpg"
+  },
+  {
+    "id": "P-003",
+    "name": "HDMI Cable",
+    "price": 199,
+    "stock": 30,
+    "category": "Cables",
+    "image": "/static/images/hdmi.jpg"
+  },
+  {
+    "id": "P-004",
+    "name": "Wireless Headphones",
+    "price": 1299,
+    "stock": 8,
+    "category": "Audio",
+    "image": "/static/images/headphones.jpg"
+  },
+  {
+    "id": "P-005",
+    "name": "Webcam",
+    "price": 899,
+    "stock": 15,
+    "category": "Peripherals",
+    "image": "/static/images/webcam.jpg"
+  },
+  {
+    "id": "P-006",
+    "name": "USB-C Cable",
+    "price": 249,
+    "stock": 25,
+    "category": "Cables",
+    "image": "/static/images/usbc.jpg"
+  }
+]

@@ -1,0 +1,82 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Shop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-brand">
+                <a href="{{ url_for('catalog') }}">Mini Shop</a>
+            </div>
+            <div class="nav-links">
+                <a href="{{ url_for('catalog') }}">Catalog</a>
+                <a href="{{ url_for('view_cart') }}">Cart ({{ cart_total }})</a>
+                {% if session.get('is_admin') %}
+                    <a href="{{ url_for('admin_products') }}">Admin</a>
+                    <a href="{{ url_for('admin_logout') }}">Logout</a>
+                {% else %}
+                    <a href="{{ url_for('admin_login') }}">Admin Login</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Mini Shop - Flask Edition</p>
+    </footer>
+
+    <script>
+function validateQuantity(form) {
+    const quantityInput = form.querySelector('input[name="qty"]');
+    const quantity = parseInt(quantityInput.value);
+    const maxStock = parseInt(quantityInput.max);
+    
+    if (isNaN(quantity) || quantity < 1) {
+        alert('Please enter a valid quantity');
+        return false;
+    }
+    
+    if (quantity > maxStock) {
+        alert(`Only ${maxStock} items available in stock`);
+        return false;
+    }
+    
+    return true;
+}
+
+// Ensure quantity inputs are always valid
+document.addEventListener('DOMContentLoaded', function() {
+    const quantityInputs = document.querySelectorAll('.quantity-input');
+    quantityInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            let value = parseInt(this.value);
+            if (isNaN(value) || value < 1) {
+                this.value = 1;
+            } else if (value > parseInt(this.max)) {
+                this.value = this.max;
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>

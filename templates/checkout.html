@@ -1,0 +1,30 @@
+<!-- templates/checkout.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="checkout-container">
+    <h1>Checkout</h1>
+    
+    <form method="POST" action="{{ url_for('checkout') }}" class="checkout-form">
+        <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="address">Shipping Address *</label>
+            <textarea id="address" name="address" rows="4" required></textarea>
+        </div>
+        
+        <div class="form-actions">
+            <a href="{{ url_for('view_cart') }}" class="button">Back to Cart</a>
+            <button type="submit" class="button primary">Place Order</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
