@@ -27,7 +27,7 @@
     "id": "P-004",
     "name": "Wireless Headphones",
     "price": 1299,
-    "stock": 8,
+    "stock": 1,
     "category": "Audio",
     "image": "/static/images/headphones.jpg"
   },
