@@ -5,7 +5,7 @@ from datetime import datetime
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 
 app = Flask(__name__)
-app.secret_key = '83328af063c5d7994d0fdb5147e71509926aaf1fbedcd558'
+app.secret_key = 'Your_key_here'
 
 # File paths
 DATA_DIR = 'data'
